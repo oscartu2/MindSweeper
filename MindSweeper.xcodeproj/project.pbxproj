@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5519AC6B200FED000046FF57 /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5519AC6A200FED000046FF57 /* SquareButton.swift */; };
 		554EC491200EB046006F4681 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554EC490200EB046006F4681 /* AppDelegate.swift */; };
 		554EC493200EB046006F4681 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554EC492200EB046006F4681 /* ViewController.swift */; };
 		554EC496200EB046006F4681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554EC494200EB046006F4681 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5519AC6A200FED000046FF57 /* SquareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButton.swift; sourceTree = "<group>"; };
 		554EC48D200EB046006F4681 /* MindSweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindSweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554EC490200EB046006F4681 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		554EC492200EB046006F4681 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				554EC490200EB046006F4681 /* AppDelegate.swift */,
+				5519AC6A200FED000046FF57 /* SquareButton.swift */,
 				554EC492200EB046006F4681 /* ViewController.swift */,
 				554EC494200EB046006F4681 /* Main.storyboard */,
 				554EC4B0200F4056006F4681 /* Square.swift */,
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5519AC6B200FED000046FF57 /* SquareButton.swift in Sources */,
 				554EC4B1200F4056006F4681 /* Square.swift in Sources */,
 				554EC493200EB046006F4681 /* ViewController.swift in Sources */,
 				554EC4B3200F4102006F4681 /* Board.swift in Sources */,
