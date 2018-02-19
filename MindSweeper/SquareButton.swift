@@ -9,15 +9,11 @@
 import Foundation
 import UIKit
 
-func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-    return CGRect(x: x, y: y, width: width, height: height)
-}
 
-class squareButton : UIButton {
+class SquareButton : UIButton {
     let squareSize:CGFloat
     let squareMargin:CGFloat
     var square:Square
-    
 
     
     init(squareModel: Square, squareSize: CGFloat, squareMargin: CGFloat) {
@@ -33,4 +29,8 @@ class squareButton : UIButton {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+    return CGRect(x: x, y: y, width: width, height: height)
 }

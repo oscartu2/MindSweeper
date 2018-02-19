@@ -5,9 +5,8 @@
 //  Created by Oscar on 1/16/18.
 //  Copyright © 2018 UGames. All rights reserved.
 //
-
+import Foundation
 import UIKit
-
 
 class ViewController: UIViewController {
     let BOARD_SIZE:Int = 10
@@ -24,12 +23,12 @@ class ViewController: UIViewController {
     
     required init(coder aDecoder: NSCoder) {
         self.board = Board(size: BOARD_SIZE)
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
-    func squareButtonPressed(sender: SquareButton) {
+    @objc func squareButtonPressed(sender: SquareButton) {
         print("Pressed row:\(sender.square.row), col:\(sender.square.col)")
-        sender.setTitle("", forState: .Normal)
+        sender.setTitle("", for: [])
     }
     
     func initializeBoard() {
@@ -37,10 +36,11 @@ class ViewController: UIViewController {
             for col in 0 ..< board.size {
                 let square = board.squares[row][col]
                 let squareSize:CGFloat = self.boardView.frame.width / CGFloat(BOARD_SIZE)
-                let squareButton = SquareButton(squareModel: square, squareSize: squareSize)
-                squareButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-                squareButton.addTarget(self, action: "squareButtonPressed:", forControlEvents: .TouchUpInside)
-                self.boardView.addSubview(view: squareButton)
+                let squareMargin:CGFloat = 1.0
+                let squareButton = SquareButton(squareModel: square, squareSize: squareSize, squareMargin: squareMargin)
+                squareButton.setTitleColor(UIColor.darkGray, for: [])
+                squareButton.addTarget(self, action: #selector(self.squareButtonPressed), for: .touchUpInside)
+                self.boardView.addSubview(squareButton)
                 self.squareButtons.append(squareButton)
             }
         }
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         self.board.resetBoard()
         // iterates through each button and resets the text to the default value
         for squareButton in self.squareButtons {
-            squareButton.setTitle("[x]", forState: .Normal)
+            squareButton.setTitle("[x]", for: [])
         }
     }
     
