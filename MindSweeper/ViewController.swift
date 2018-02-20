@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
     @IBAction func newGamePressed() {
         print("New Game pressed")
+        self.startNewGame()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -27,8 +28,13 @@ class ViewController: UIViewController {
     }
     
     @objc func squareButtonPressed(sender: SquareButton) {
-        print("Pressed row:\(sender.square.row), col:\(sender.square.col)")
-        sender.setTitle("", for: [])
+        if (!sender.square.isRevealed) {
+            sender.square.isRevealed = true
+            sender.setTitle("\(sender.getLabelText())", for: [])
+        }
+        if sender.square.isMineLocation {
+            self.minePressed()
+        }
     }
     
     func initializeBoard() {
@@ -48,6 +54,12 @@ class ViewController: UIViewController {
     
     func startNewGame() {
         self.resetBoard()
+    }
+    
+    func minePressed() {
+        // show an alert when you tap on a mine
+        let alert = UIAlertController(title: "New Game", message = "You tapped on a mine.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok"))
     }
     
     func resetBoard() {

@@ -29,6 +29,21 @@ class SquareButton : UIButton {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func getLabelText() -> String {
+        // check the isMineLocation and numNeighboringMines properties to determine the text to display
+        if !self.square.isMineLocation {
+            if self.square.numNeighbouringMines == 0 {
+                // case 1 no mine and no neighbouring mines
+                return ""
+            } else {
+                // case 2 no mine but there are neighbouring mines
+                return "\(self.square.numNeighbouringMines)"
+            }
+        }
+        // case 3 there is mine
+        return "M"
+    }
 }
 
 func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
