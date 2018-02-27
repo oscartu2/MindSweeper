@@ -12,12 +12,26 @@ class ViewController: UIViewController {
     let BOARD_SIZE:Int = 10
     var board:Board
     var squareButtons:[SquareButton] = []
+    var moves:Int = 0 {
+        didSet {
+            self.movesLabel.text = "Moves: \(moves)"
+            self.movesLabel.sizeToFit()
+        }
+    }
+    var timeTaken:Int = 0 {
+        didSet {
+            self.timeLabel.text = "Time: \(timeTaken)"
+            self.timeLabel.sizeToFit()
+        }
+    }
+    var oneSecondTimer: Timer?
     
     @IBOutlet weak var boardView: UIView!
     @IBOutlet weak var movesLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBAction func newGamePressed() {
+        self.endCurrentGame()
         print("New Game pressed")
         self.startNewGame()
     }
@@ -31,6 +45,7 @@ class ViewController: UIViewController {
         if (!sender.square.isRevealed) {
             sender.square.isRevealed = true
             sender.setTitle("\(sender.getLabelText())", for: [])
+            self.moves = self.moves + 1
         }
         if sender.square.isMineLocation {
             self.minePressed()
@@ -54,12 +69,29 @@ class ViewController: UIViewController {
     
     func startNewGame() {
         self.resetBoard()
+        self.timeTaken = 0
+        self.moves = 0
+        self.oneSecondTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.oneSecond), userInfo: nil, repeats: true)
+    }
+    
+    @objc func oneSecond() {
+        self.timeTaken = self.timeTaken + 1
+    }
+    
+    func endCurrentGame() {
+        self.oneSecondTimer!.invalidate()
+        self.oneSecondTimer = nil
     }
     
     func minePressed() {
+        self.endCurrentGame()
         // show an alert when you tap on a mine
-        let alert = UIAlertController(title: "New Game", message = "You tapped on a mine.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok"))
+        let alert = UIAlertController(title: "BOOM!", message: "You tapped on a mine.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: { action in
+            self.startNewGame()
+        }))
+        self.present(alert, animated: true)
     }
     
     func resetBoard() {
