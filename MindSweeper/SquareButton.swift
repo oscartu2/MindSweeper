@@ -30,7 +30,7 @@ class SquareButton : UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func getLabelText() -> String {
+    func getMineImage() -> UIImage {
         // check the isMineLocation and numNeighboringMines properties to determine the text to display
         if !self.square.isMineLocation {
             if self.square.numNeighbouringMines == 0 {
@@ -38,6 +38,7 @@ class SquareButton : UIButton {
                 return ""
             } else {
                 // case 2 no mine but there are neighbouring mines
+                //******** need to add images for num neighbouring mines
                 return "\(self.square.numNeighbouringMines)"
             }
         }

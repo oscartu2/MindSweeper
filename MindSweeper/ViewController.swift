@@ -44,8 +44,11 @@ class ViewController: UIViewController {
     @objc func squareButtonPressed(sender: SquareButton) {
         if (!sender.square.isRevealed) {
             sender.square.isRevealed = true
-            sender.setTitle("\(sender.getLabelText())", for: [])
+            sender.setImage(sender.getMineImage(), for: [])
             self.moves = self.moves + 1
+            if (sender.getMineImage() == "") {
+                
+            }
         }
         if sender.square.isMineLocation {
             self.minePressed()
@@ -99,7 +102,7 @@ class ViewController: UIViewController {
         self.board.resetBoard()
         // iterates through each button and resets the text to the default value
         for squareButton in self.squareButtons {
-            squareButton.setTitle("[x]", for: [])
+            squareButton.setImage(UIImage(named: "brain.png"), for: [])
         }
     }
     
