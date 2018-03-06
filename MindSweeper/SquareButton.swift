@@ -42,7 +42,7 @@ class SquareButton : UIButton {
             }
         }
         // case 3 there is mine
-        return "M"
+        return "xD"
     }
 }
 

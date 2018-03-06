@@ -44,11 +44,20 @@ class ViewController: UIViewController {
     @objc func squareButtonPressed(sender: SquareButton) {
         if (!sender.square.isRevealed) {
             sender.square.isRevealed = true
+            if (sender.getLabelText() == "") {
+                floodFill(sender)
+            }
             sender.setTitle("\(sender.getLabelText())", for: [])
             self.moves = self.moves + 1
         }
         if sender.square.isMineLocation {
             self.minePressed()
+        }
+    }
+    
+    func floodFill(sender: SquareButton) {
+        if (sender.getLabelText() != "") {
+            return
         }
     }
     
@@ -99,7 +108,7 @@ class ViewController: UIViewController {
         self.board.resetBoard()
         // iterates through each button and resets the text to the default value
         for squareButton in self.squareButtons {
-            squareButton.setTitle("[x]", for: [])
+            squareButton.setTitle(":^)", for: [])
         }
     }
     
